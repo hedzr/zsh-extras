@@ -33,18 +33,18 @@ function if_centos () {
     false
   fi
 }
-# 仅适用于 qcloud VPC 环境
+# for qcloud VPC
 # /etc/machine-id, /etc/machine-info
 # /etc/cloud, /var/lib/cloud, 
 # /usr/local/qcloud
 function if_qcloud () {
   [ -f /etc/qcloudzone ] # && grep -qPi '' /etc/qcloudzone
 }
-# 部分正确，aliyun标准镜像中，ubuntu 14.04通过本测试
+# partically ok，aliyun ubuntu 14.04
 function if_aliyun () {
   [ -f /etc/motd ] && grep -qPi 'ali(yun|baba)' /etc/motd
 }
-# 部分正确，aliyun标准镜像中，ubuntu 14.04通过本测试
+# partically ok，aliyun ubuntu 14.04
 function if_aliyun_vpc () {
   [ -f /etc/motd ] && grep -qPi 'ali(yun|baba)' /etc/motd  && {
     sudo grep -qi 'aliyun' /var/lib/cloud/instance/datasource && {
@@ -328,7 +328,7 @@ is_darwin && {
 
 
 # stree .
-# 打开当前目录到SourceTree
+# open the current folder to SourceTree
 alias stree='open -a SourceTree'
 
 alias find_build_and_rm='find . -type d -iname "build" -exec rm -rf {} \;'
